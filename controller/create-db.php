@@ -9,6 +9,17 @@
 		die("Error: " . $connection->connect_error);
 	}
 
-	$exists = 
+	// This is going to try and access a database that exists on the server.
+	$exists = $connection->select_db($database);
 
-	$connection->close();
+	// This will create a database.
+	if(!$exists) {
+		$query = $connection->query("CREATE DATABASE $database");
+	
+	// and this will echo out if the database was created successfully.
+		if($query) {
+			echo "Successfully created database: " . $database;
+		}
+	} 
+
+	$connection->close(); 

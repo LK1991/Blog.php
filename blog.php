@@ -1,4 +1,4 @@
 <?php
-	// It calls the create-db.php file to echo out either "Error: " or "Success: "
+	// It calls the create-db.php file
 	require_once(__DIR__ . "/controller/create-db.php");
 ?>
