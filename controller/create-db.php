@@ -8,9 +8,7 @@
 	if($connection->connect_error) {
 		die("Error: " . $connection->connect_error);
 	}
-	// If it is a success, it will echo out "Success".
-	else {
-		echo "Success: " . $connection->host_info;
-	}
+
+	$exists = 
 
 	$connection->close();
