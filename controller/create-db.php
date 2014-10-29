@@ -21,5 +21,9 @@
 			echo "Successfully created database: " . $database;
 		}
 	} 
+	// this echos out that the database has already been added.
+	else {
+		echo "Database already exists.";
+	}
 
 	$connection->close(); 
