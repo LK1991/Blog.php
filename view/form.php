@@ -1,4 +1,4 @@
-<!-- This is creating a form -->
+<!-- This is creating a form that you can submit to the project in phpMyAdmin -->
 <h1>Create Blog Post</h1>
 
 <form>
@@ -10,4 +10,9 @@
 		<label for="post">Post: </label>
 		<textarea name="post"></textarea>
 	</div>
+
+	<div>
+		<button type="submit">Submit</button>
+	</div>
 </form>
+
