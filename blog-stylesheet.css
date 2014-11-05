@@ -4,3 +4,11 @@ body {
 	 font-family: 'Indie Flower', cursive;
 	 font-size: 20px;
 }
+
+h1 {
+	text-align: center;
+}
+
+div {
+	text-align: center;
+}
