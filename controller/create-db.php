@@ -1,5 +1,5 @@
 <?php
-	// It calls the database.php file
+	// It calls the database.php file and almost everything in it.
 	require_once(__DIR__ . "/../model/database.php");
 
 	$connection = new mysqli($host, $username, $password);
@@ -40,4 +40,4 @@
 		echo "<p>$connection->error</p>";
 	}
 	$connection->close();
-
+	// That is closing the connection.
