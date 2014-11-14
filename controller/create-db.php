@@ -1,6 +1,7 @@
 <?php
 	// It calls the database.php file and almost everything in it.
-	require_once(__DIR__ . "/../model/database.php");
+	// Fixed the code because everything in database.php moved to config.php
+	require_once(__DIR__ . "/../model/config.php");
 
 	$connection = new mysqli($host, $username, $password);
 
@@ -39,5 +40,6 @@
 	else {
 		echo "<p>$connection->error</p>";
 	}
+	
 	$connection->close();
 	// That is closing the connection.
