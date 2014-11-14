@@ -1,5 +1,8 @@
 <?php
-// A class contains a bunch of code and relevant data together, isolated from everything else. It makes it easier to move it around without disrupting other code.
+// A class holds a bunch of code and relevant data together, isolated from everything else. 
+// It makes it easier to change the code around without disrupting other code, without affecting other classes.
+// You can call it anytime because it's an object.
+class Database {
 	private $connection;
 	private $host;
 	private $username;
