@@ -26,11 +26,16 @@ class Database {
 	}
 	}
 
+// The isset function is checking to see if the variable is set or not. And it is closing the connection.
 	public function closeConnection() {
-
+		if(isset($this->connetion)) {
+			$this->connnection->close();
+		}
 	}
 
 	public function query($string) {
 
 	}
 }
+
+//A function is a block of statements that can be used repeatedly in a program. It will not execute immediately when a page loads. But it will be executed by a call to the function.
