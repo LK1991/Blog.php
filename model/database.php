@@ -28,7 +28,7 @@ class Database {
 
 // The isset function is checking to see if the variable is set or not. And it is closing the connection.
 	public function closeConnection() {
-		if(isset($this->connetion)) {
+		if(isset($this->connection)) {
 			$this->connnection->close();
 		}
 	}
