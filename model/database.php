@@ -32,7 +32,6 @@ class Database {
 			$this->connnection->close();
 		}
 	}
-
 	public function query($string) {
 		$this->openConnection();
 

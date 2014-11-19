@@ -3,7 +3,8 @@
 	// Fixed the code because everything in database.php moved to config.php
 	require_once(__DIR__ . "/../model/config.php");
 
-	$connection = new mysqli($host, $username, $password);
+	// It's connnecting to the datbase.
+	$connection = new mysqli($host, $username, $password, $database);
 
 	// If you get an error, it will print out an error.
 	if($connection->connect_error) {

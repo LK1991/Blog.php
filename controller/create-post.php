@@ -20,6 +20,3 @@
 	else {
 		echo "<p>$connection->error</p>";
 	}
-
-	$connection->close();
-	// That is closing the connection.    
