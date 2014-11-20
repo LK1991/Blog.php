@@ -8,6 +8,7 @@ class Database {
 	private $username;
 	private $password;
 	private $database;
+	public $error;
 
 // This is storing variables into a construct function.
 	public function __construct($host, $username, $password, $database) {
@@ -15,10 +16,35 @@ class Database {
 		$this->username = $username;
 		$this->password = $password;
 		$this->database = $database;
+
+		// It's connnecting to the datbase.
+		$this->connection = new mysqli($host, $username, $password);
+
+		// If you get an error, it will print out an error.
+		if($this->connection->connect_error) {
+			die("<p>Error: " . $this->connection->connect_error . "</p>");
+		}
+
+		// This is going to try and access a database that exists on the server.
+		$exists = $this->connection->select_db($database);
+
+		// This will create a database.
+		if(!$exists) {
+			$query = $this->connection->query("CREATE DATABASE $database");
+	
+		// And this will echo out if the database was created successfully.
+		if($query) {
+			echo "<p>Successfully created database: " . $database . "</p>";
+		}
+		} 
+		// This echos out that the database has already been added.
+		else {
+			echo "<p>Database already exists.</p>";
+		}
 	}
 
 	public function openConnection() {
-		$this->connection = new mysqli($this->host, $this->username, $this->password);
+		$this->connection = new mysqli($this->host, $this->username, $this->password, $this->database);
 
 	// If you get an error, it will print out an error.
 	if($this->connection->connect_error) {
@@ -29,13 +55,17 @@ class Database {
 // The isset function is checking to see if the variable is set or not. And it is closing the connection.
 	public function closeConnection() {
 		if(isset($this->connection)) {
-			$this->connnection->close();
+			$this->connection->close();
 		}
 	}
 	public function query($string) {
 		$this->openConnection();
 
 		$query = $this->connection->query($string);
+
+		if(!$query) {
+			$this->error = $this->connection->error;
+		}
 
 		$this->closeConnection();
 
