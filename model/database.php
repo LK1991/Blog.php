@@ -9,6 +9,7 @@ class Database {
 	private $password;
 	private $database;
 	public $error;
+// Added a public error variable to prevent errors.
 
 // This is storing variables into a construct function.
 	public function __construct($host, $username, $password, $database) {
