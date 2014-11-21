@@ -11,12 +11,12 @@
 	$post = filter_input(INPUT_POST, "post", FILTER_SANITIZE_STRING);
 
 	// This is inserting the post that we put into the database.
-	$query = $connection->query("INSERT INTO posts SET title = '$title', post = '$post'");
+	$query = $_SESSION["connection"]->query("INSERT INTO posts SET title = '$title', post = '$post'");
 
 	// If inserting it was successfull, it will echo out that is was successful and if it wasn't, it'll echo out an error.
 	if($query) {
 		echo "<p>Successfully inserted post: $title</p>";
 	}
 	else {
-		echo "<p>$connection->error</p>";
+		echo "<p>" . $_SESSION["connection"]->error . "</p>";
 	}
