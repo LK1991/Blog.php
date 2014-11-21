@@ -16,3 +16,4 @@
 	else {
 		echo "<p>" . $_SESSION["connection"]->error . "</p>";
 	}
+	// A session is a way to store information in variables to be used across multiple pages.

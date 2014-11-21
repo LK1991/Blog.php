@@ -1,6 +1,7 @@
 <?php
 	require_once(__DIR__ . "/database.php");
 	session_start();
+// Sessions store user information.
 
 // This is keeping all the files in one page so you won't have to update anything. 
 	$path = "/blog-php/";
