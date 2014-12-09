@@ -8,4 +8,9 @@
 	$password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
 	// This is echoing out what you put in the register form.
-	echo $email . " - " . $username . " - " . $password;
+	echo $password;
+
+	// The salt variable restricts you from having a weak password.
+	$salt = "$5$" . "rounds=5000$" . uniqid(mt_rand(), true) . "$";
+	
+	echo $salt;
