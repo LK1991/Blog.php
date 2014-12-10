@@ -7,10 +7,22 @@
 	$username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
 	$password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
-	// This is echoing out what you put in the register form.
-	echo $password;
-
 	// The salt variable restricts you from having a weak password.
 	$salt = "$5$" . "rounds=5000$" . uniqid(mt_rand(), true) . "$";
 	
-	echo $salt;
+	// Without hashing, any passwords that are stored in your application's database can be stolen.
+	$hashedPassword = crypt($password, $salt);
+
+	// Inserting a post.
+	$query = $_SESSION["connection"]->query("INSERT INTO users SET "
+		. "email = '$email',"
+		. "username = '$username',"
+		. "password = '$hashedPassword',"
+		. "salt = '$salt'");
+
+	if($query) {
+		echo "Successfully created user: $username";
+	}
+	else {
+		echo "<p>" . $_SESSION["connection"]->error . "</p>";
+	}
