@@ -1,5 +1,5 @@
 <?php
-
+	//  Requiring this file.
 	require_once(__DIR__ . "/../model/config.php");
 
 	// The FILTER_SANITIZE_STRING strips or encodes unwanted characters.
@@ -7,4 +7,18 @@
 	$password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
 	// This is selecting the salt and the password from the users database in the username column.
-	$query = $_SESSION["connection"]->query("SELECT salt, password FROM users WHERE usernames = '$username'");
+	$query = $_SESSION["connection"]->query("SELECT salt, password FROM users WHERE username = '$username'");
+
+	if($query->num_rows == 1) {
+		$row = $query->fetch_array();
+
+		if($row["password"] === crypt($password, $row["salt"])) {
+			echo "<p>Login Successful!</p>";
+		}
+		else {
+			echo "<p>Invalid username and password</p>";
+		}
+	}
+	else {
+		echo "<p>Invalid username and password</p>";
+	}
