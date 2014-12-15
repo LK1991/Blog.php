@@ -4,6 +4,7 @@
 	$query = "SELECT * FROM posts";
 	$result = $_SESSION["connection"]->query($query);
 
+	// Displays all the posts.
 	if($result) {
 		while($row = mysqli_fetch_array($result)) {
 			echo "<div class = 'post'>";
